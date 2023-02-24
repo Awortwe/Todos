@@ -31,8 +31,9 @@
                                     <td>{{ $task->description }}</td>
                                     <td>
                                         <a href="{{ route('tasks.edit', $task) }}" class="btn btn-primary btn-sm">Edit</a>
-                                        <form action="" method="post" style="display: inline-block">
+                                        <form action="{{ route('tasks.destroy', $task) }}" method="post" style="display: inline-block">
                                             @csrf
+                                            @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                         </form>
                                     </td>

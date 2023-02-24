@@ -59,7 +59,12 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
-        //
+        $task->update([
+            'title' => $request->title,
+            'description' => $request->description
+        ]);
+
+        return redirect()->route('home')->with('status', 'Task updated successfully');
     }
 
     /**
@@ -67,6 +72,8 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+
+        return redirect()->back()->with('status', 'Task deleted successfully');
     }
 }

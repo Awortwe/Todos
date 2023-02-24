@@ -18,8 +18,9 @@
                         </div>
                     @endif
 
-                   <form action="" method="post">
+                   <form action="{{ route('tasks.update', $task) }}" method="post">
                     @csrf
+                    @method('PUT')
                     <div class="mb-3">
                         <label for="title">Title</label>
                         <input type="text" name="title" id="title" class="form-control" value="{{ $task->title }}">
