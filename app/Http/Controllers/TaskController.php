@@ -21,7 +21,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -29,7 +29,13 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
-        //
+        Task::create([
+            'user_id' => auth()->id(),
+            'title' => $request->title,
+            'description' => $request->description
+        ]);
+
+        return redirect()->route('home')->with('status', 'Task added successfully');
     }
 
     /**
@@ -45,7 +51,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        return view('edit', compact('task'));
     }
 
     /**
